@@ -2,11 +2,88 @@
     <head>
         <title>Meu primeiro HTML</title>
         <link rel="stylesheet" href="index.css">
+        
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(29, 29, 29);
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.formulario {
+    width: 800px;
+    margin: 0 auto;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px;
+    background-color: rgb(90, 90, 90);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    color: aliceblue;
+    font-weight: bold;
+
+}
+
+label2 {
+
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    color: aliceblue;
+    font-weight: bold;
+
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+input[type="number"] {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgb(154, 154, 154);
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+input[type="text"] {
+    border-radius: 10px;
+    border: 1px solid rgb(154, 154, 154);
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+button {
+    width: 100%;
+    background-color: rgb(33, 192, 33);
+    border: none;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+#resultado {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 20px;
+}
 
 </head>
     <body>
     
-    <style>
+<style>
     body {
     font-family: Arial, sans-serif;
     background-color: rgb(29, 29, 29);
@@ -83,8 +160,6 @@ button {
     margin-top: 20px;
 }
     
-    
-    <style>
     
     
         <h1 style="color: rgb(18, 67, 191)" >Recibo Simples</h1>
