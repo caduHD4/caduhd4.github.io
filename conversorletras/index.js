@@ -11,6 +11,7 @@ function converteMaiusculo() {
   }
   
   function convertePrimeiraLetra() {
+    converteMinusculo();
     let texto = document.getElementById('texto').value;
     let palavras = texto.split(' ');
     for (let i = 0; i < palavras.length; i++) {
