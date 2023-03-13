@@ -37,17 +37,33 @@
             <input type="text" id="cpfemi"  placeholder="Informe o cpf ou cnpj"/>
             
             <label>Forma de Pagamento:</label>
-                  <input type="radio" id="dinheiro" name="fav_language" value="dinheiro">
-                  <label2 for="dinheiro">Dinheiro</label><br>
-                  <input type="radio" id="pix" name="fav_language" value="pix">
-                  <label2 for="pix">Pix</label><br>
-                  <input type="radio" id="cheque" name="fav_language" value="cheque">
-                  <label2 for="cheque">Cheque</label>
-                  <input type="radio" id="transferencia" name="fav_language" value="transferencia">
-                  <label2 for="trans">Tranferência/Depósito</label><br>
-                  <input type="radio" id="cartao" name="fav_language" value="cartao">
-                  <label2 for="cartao">Cartão de crédito/Débito</label>
-                    <div id="radio">
+                <div>
+                    <input type="radio" id="dinheiro" name="fav_language" value="dinheiro">
+                    <label2 for="dinheiro">Dinheiro</label><br>
+                </div>
+
+                <div>
+                    <input type="radio" id="pix" name="fav_language" value="pix">
+                    <label2 for="pix">Pix</label><br>
+                </div>
+
+                <div>
+                    <input type="radio" id="cheque" name="fav_language" value="cheque">
+                    <label2 for="cheque">Cheque</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="transferencia" name="fav_language" value="transferencia">
+                    <label2 for="trans">Tranferência/Depósito</label><br>
+
+                </div>
+
+                <div>
+                    <input type="radio" id="cartao" name="fav_language" value="cartao">
+                    <label2 for="cartao">Cartão de crédito/Débito</label>
+
+                </div>
+                    <label id="radio"> 
                         <div id="camposCartao" style="display:none">
                             <label>Duas vias?</label>
                             <input type="checkbox" id="vias"/>
@@ -56,14 +72,43 @@
     
                         <div id="camposDinheiro" style="display:none">
                             <label>Duas vias?</label>
-                            <input type="checkbox" id="vias2"/>
-                            <label2 for="vias2">Sim</label>
+                            <input type="checkbox" id="vias"/>
+                            <label2 for="vias">Sim</label>
                         </div>
+
+                        <div id="camposPix" style="display:none">
+                            <label>Quem recebeu?:</label>
+                            <input type="text" id="pagadorPix" placeholder="Digite o nome" />
+
+                            <label>Instituição/Banco:</label>
+                            <input type="text" id="insti" placeholder="Digite a Instituição" />
+
+                            <label>Chave PIX:</label>
+                            <input type="text" id="chavePix" placeholder="Digite a chave" />
+
+                            <label>Duas vias?</label>
+                            <input type="checkbox" id="vias" />
+                            <label2 for="vias">Sim</label>
+                        </div>
+
+                        <div id="camposCheque" style="display:none">
+                            <label>Nº do Cheque:</label>
+                            <input type="text" id="NumCheque" placeholder="Digite o número" />
+
+                            <label>Banco:</label>
+                            <input type="text" id="banco" placeholder="Digite o banco" />
+
+                            <label>Agência:</label>
+                            <input type="text" id="agencia" placeholder="Digite a agência" />
+
+                            <label>Bom para...</label>
+                            <input type="text" id="BomPara" placeholder="Digite a data" />
+                        </div>
+                    </label>
+
+            <button onclick="gerar()" id="botao">Gerar Recibo</button>
             
-            <button onclick="calcular()" id="botao">Gerar Recibo</button>
-
             <div id="resultado"></div>
-
         </div>
 
 <script src="index.js"></script>
