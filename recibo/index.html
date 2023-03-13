@@ -47,19 +47,18 @@
                   <label2 for="trans">Tranferência/Depósito</label><br>
                   <input type="radio" id="cartao" name="fav_language" value="cartao">
                   <label2 for="cartao">Cartão de crédito/Débito</label>
-
-                    <div id="camposCartao" style="display:none">
-                        <label>Duas vias?</label>
-                        <input type="checkbox" id="vias"/>
-                        <label2 for="vias">Sim</label>
-                    </div>
-
-                    <div id="camposDinheiro" style="display:none">
-                        <label>Duas vias?</label>
-                        <input type="checkbox" id="vias2"/>
-                        <label2 for="vias2">Sim</label>
-                    </div>
-                      
+                    <div id="radio">
+                        <div id="camposCartao" style="display:none">
+                            <label>Duas vias?</label>
+                            <input type="checkbox" id="vias"/>
+                            <label2 for="vias">Sim</label>
+                        </div>
+    
+                        <div id="camposDinheiro" style="display:none">
+                            <label>Duas vias?</label>
+                            <input type="checkbox" id="vias2"/>
+                            <label2 for="vias2">Sim</label>
+                        </div>
             
             <button onclick="calcular()" id="botao">Gerar Recibo</button>
 
