@@ -1,53 +1,55 @@
-const camposCartao = document.getElementById("camposCartao");
-const camposDinheiro = document.getElementById("camposDinheiro");
-const cartao = document.getElementById("cartao");
-const dinheiro = document.getElementById("dinheiro");
-const pix = document.getElementById("pix");
-const camposPix = document.getElementById("camposPix");
-const cheque = document.getElementById("cheque");
-const camposCheque = document.getElementById("camposCheque");
-const trans = document.getElementById("trans");
-const camposTrans = document.getElementById("camposTrans");
 
-cartao.addEventListener("change", function() {
-  if (cartao.checked) {
-    camposDinheiro.style.display = "none";
-    camposCartao.style.display = "block";
+
+const paymentRadios = document.querySelectorAll('input[name="FormaPaga"]');
+const opCartao = document.getElementById('opCartao');
+const opCheque = document.getElementById('opCheque');
+const opDinheiro = document.getElementById('opDinheiro');
+const opTrans = document.getElementById('opTrans');
+const opPix = document.getElementById('opPix');
+
+function showOptions(FormaPaga) {
+  if (FormaPaga === 'cartao') {
+    opCartao.style.display = 'block';
   } else {
-    camposCartao.style.display = "none";
+    opCartao.style.display = 'none';
   }
+
+  if (FormaPaga === 'cheque') {
+    opCheque.style.display = 'block';
+  } else {
+    opCheque.style.display = 'none';
+  }
+
+  if (FormaPaga === 'trans') {
+    opTrans.style.display = 'block';
+  } else {
+    opTrans.style.display = 'none';
+  }
+
+  if (FormaPaga === 'dinheiro') {
+    opDinheiro.style.display = 'block';
+  } else {
+    opDinheiro.style.display = 'none';
+  }
+
+  if (FormaPaga === 'pix') {
+    opPix.style.display = 'block';
+  } else {
+    opPix.style.display = 'none';
+  }
+
+}
+
+paymentRadios.forEach(radio => {
+  radio.addEventListener('change', () => {
+    const FormaPaga = document.querySelector('input[name="FormaPaga"]:checked').value;
+    showOptions(FormaPaga);
+  });
 });
 
-dinheiro.addEventListener("change", function() {
-  if (dinheiro.checked) {
-    camposCartao.style.display = "none";
-    camposDinheiro.style.display = "block";
-  } else {
-    camposDinheiro.style.display = "none";
-  }
-});
 
-pix.addEventListener("change", function () {
-  if (pix.checked) {
-    camposDinheiro.style.display = "none";
-    camposPix.style.display = "block";
-  } else {
-    camposPix.style.display = "none";
-  }
-});
 
-cheque.addEventListener("change", function () {
-  if (cheque.checked) {
-    camposCheque.style.display = "block";
-  } else {
-    camposCheque.style.display = "none";
-  }
-});
+const mensagem = `${valor}# Recebi(emos) de ${pagador} a importância de ${valor} referente à ${beneficiario}.\nPara maior clareza firmo(amos) o presente recibo para que produza os seus efeitos, dando plena, rasa e irrevogável quitação, pelo valor recebido.\nPagamento recebido por: ${beneficiario} - chave pix: ${chavePix} - ${banco}\n\n${data}\n_____________\n${nomeAssinante}\n${cpfAssinante}\n${telefoneAssinante}`;
 
-trans.addEventListener("change", function () {
-  if (trans.checked) {
-    camposTrans.style.display = "block";
-  } else {
-    camposTrans.style.display = "none";
-  }
-});
+const reciboDiv = document.getElementById("recibo");
+reciboDiv.innerText = mensagem;
