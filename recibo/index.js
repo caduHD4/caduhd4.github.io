@@ -4,7 +4,7 @@ const opCheque = document.getElementById('opCheque');
 const opDinheiro = document.getElementById('opDinheiro');
 const opTrans = document.getElementById('opTrans');
 const opPix = document.getElementById('opPix');
-
+var opcoes;
 
 function showOptions(FormaPaga) {
   if (FormaPaga === 'cartao') {
@@ -27,12 +27,14 @@ function showOptions(FormaPaga) {
 
   if (FormaPaga === 'dinheiro') {
     opDinheiro.style.display = 'block';
+    gerarRecibo(1);
   } else {
     opDinheiro.style.display = 'none';
   }
 
   if (FormaPaga === 'pix') {
     opPix.style.display = 'block';
+    gerarRecibo(2);
   } else {
     opPix.style.display = 'none';
   }
@@ -46,7 +48,7 @@ paymentRadios.forEach(radio => {
   });
 });
 
-function gerarRecibo(FormaPaga) {
+function gerarRecibo(opcoes) {
   const valor = document.getElementById('valor').value;
   const pagador = document.getElementById('pagador').value;
   const referente = document.getElementById('referente').value;
@@ -57,12 +59,20 @@ function gerarRecibo(FormaPaga) {
   const cidade = document.getElementById('cidade').value;
   const data = document.getElementById('data').value;
 
-  
-
+    if(opcoes == 1){
     const mensagem = `R$${valor}# Recebi(emos) de ${pagador} - CPF/CNPJ ${cpf} a importância de R$${valor} referente à ${referente}.\nPara maior clareza firmo(amos) o presente recibo para que produza os seus efeitos, dando plena, rasa e irrevogável quitação, pelo valor recebido. ${cidade}, ${data}\nPagamento recebido por: ${referente}\n\n_____________\n${emissor}\n${cpf_cnpj}\n${telefone}`;
 
     const reciboDiv = document.getElementById("recibo");
     reciboDiv.innerText = mensagem;
+    }
+    if(opcoes == 2){
+      const mensagem = `R$${valor}# Receeeeeeeebi(emos) de ${pagador} - CPF/CNPJ ${cpf} a importância de R$${valor} referente à ${referente}.\nPara maior clareza firmo(amos) o presente recibo para que produza os seus efeitos, dando plena, rasa e irrevogável quitação, pelo valor recebido. ${cidade}, ${data}\nPagamento recebido por: ${referente}\n\n_____________\n${emissor}\n${cpf_cnpj}\n${telefone}`;
+  
+      const reciboDiv = document.getElementById("recibo");
+      reciboDiv.innerText = mensagem;
+
+    }
+
   }
 
  
