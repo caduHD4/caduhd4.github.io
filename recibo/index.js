@@ -46,7 +46,7 @@ paymentRadios.forEach(radio => {
   });
 });
 
-function gerarRecibo() {
+function gerarRecibo(FormaPaga) {
   const valor = document.getElementById('valor').value;
   const pagador = document.getElementById('pagador').value;
   const referente = document.getElementById('referente').value;
@@ -54,11 +54,16 @@ function gerarRecibo() {
   const emissor = document.getElementById('emissor').value;
   const cpf_cnpj = document.getElementById('cpf_cnpj').value;
   const telefone = document.getElementById('telefone').value;
+  const cidade = document.getElementById('cidade').value;
+  const data = document.getElementById('data').value;
 
+  
 
+    const mensagem = `R$${valor}# Recebi(emos) de ${pagador} - CPF/CNPJ ${cpf} a importância de R$${valor} referente à ${referente}.\nPara maior clareza firmo(amos) o presente recibo para que produza os seus efeitos, dando plena, rasa e irrevogável quitação, pelo valor recebido. ${cidade}, ${data}\nPagamento recebido por: ${referente}\n\n_____________\n${emissor}\n${cpf_cnpj}\n${telefone}`;
 
-  const mensagem = `R$${valor}# Recebi(emos) de ${pagador} - CPF/CNPJ ${cpf} a importância de R$${valor} referente à ${referente}.\nPara maior clareza firmo(amos) o presente recibo para que produza os seus efeitos, dando plena, rasa e irrevogável quitação, pelo valor recebido.\nPagamento recebido por: ${referente}\n_____________\n${emissor}\n${cpf_cnpj}\n${telefone}`;
+    const reciboDiv = document.getElementById("recibo");
+    reciboDiv.innerText = mensagem;
+  }
 
-  const reciboDiv = document.getElementById("recibo");
-  reciboDiv.innerText = mensagem;
-}
+ 
+
