@@ -1,11 +1,10 @@
-
-
 const paymentRadios = document.querySelectorAll('input[name="FormaPaga"]');
 const opCartao = document.getElementById('opCartao');
 const opCheque = document.getElementById('opCheque');
 const opDinheiro = document.getElementById('opDinheiro');
 const opTrans = document.getElementById('opTrans');
 const opPix = document.getElementById('opPix');
+
 
 function showOptions(FormaPaga) {
   if (FormaPaga === 'cartao') {
@@ -47,9 +46,19 @@ paymentRadios.forEach(radio => {
   });
 });
 
+function gerarRecibo() {
+  const valor = document.getElementById('valor').value;
+  const pagador = document.getElementById('pagador').value;
+  const referente = document.getElementById('referente').value;
+  const cpf = document.getElementById('cpf').value;
+  const emissor = document.getElementById('emissor').value;
+  const cpf_cnpj = document.getElementById('cpf_cnpj').value;
+  const telefone = document.getElementById('telefone').value;
 
 
-const mensagem = `${valor}# Recebi(emos) de ${pagador} a importância de ${valor} referente à ${beneficiario}.\nPara maior clareza firmo(amos) o presente recibo para que produza os seus efeitos, dando plena, rasa e irrevogável quitação, pelo valor recebido.\nPagamento recebido por: ${beneficiario} - chave pix: ${chavePix} - ${banco}\n\n${data}\n_____________\n${nomeAssinante}\n${cpfAssinante}\n${telefoneAssinante}`;
 
-const reciboDiv = document.getElementById("recibo");
-reciboDiv.innerText = mensagem;
+  const mensagem = `R$${valor}# Recebi(emos) de ${pagador} - CPF/CNPJ ${cpf} a importância de R$${valor} referente à ${referente}.\nPara maior clareza firmo(amos) o presente recibo para que produza os seus efeitos, dando plena, rasa e irrevogável quitação, pelo valor recebido.\nPagamento recebido por: ${referente}\n_____________\n${emissor}\n${cpf_cnpj}\n${telefone}`;
+
+  const reciboDiv = document.getElementById("recibo");
+  reciboDiv.innerText = mensagem;
+}

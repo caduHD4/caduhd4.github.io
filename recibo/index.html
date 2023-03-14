@@ -10,7 +10,7 @@
         <h1 style="color: rgb(18, 67, 191)" >Recibo Simples</h1>
         <div class="formulario">
             <label>Valor:</label>
-            <input type="number" id="altura" placeholder="00,00" />
+            <input type="number" id="valor" placeholder="00,00" />
 
             <label>Nome do Pagador:</label>
             <input type="text" id="pagador" placeholder="Digite o nome"/>
@@ -34,7 +34,7 @@
             <input type="text" id="telefone" placeholder="Informe o número"/>
 
             <label2>CPF ou CNPJ (opcional):</label>
-            <input type="text" id="cpfemi"  placeholder="Informe o cpf ou cnpj"/>
+            <input type="text" id="cpf_cnpj"  placeholder="Informe o cpf ou cnpj"/>
             
             <label>Forma de Pagamento:</label>
                 <label2>
@@ -129,7 +129,7 @@
                   </div>
 
 
-            <button onclick="gerar()" id="botao">Gerar Recibo</button>
+            <button onclick="gerarRecibo()" id="botao">Gerar Recibo</button>
             
             <div id="recibo"></div>
         </div>
