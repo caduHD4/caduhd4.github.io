@@ -4,20 +4,32 @@ form.addEventListener('submit', function (event) {
     const repositorio = document.querySelector("#repositorio").value
     const dataInicial = document.querySelector("#dataInicial").value
     const dataFinal = document.querySelector("#dataFinal").value
+    
+ 
+    
     buscarCommits(repositorio, dataInicial, dataFinal)
-
 })
 
 function buscarCommits(repositorio, dataInicial, dataFinal) {
-    const token = "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"
+
+    if (repositorio.startsWith("https://github.com/")) {
+        repositorio = repositorio.slice(19);
+    }
     const options = {
-        headers: {
-            Authorization: `Token ${token}`
-        }
+        headers: {}
     }
     const url = `https://api.github.com/repos/${repositorio}/commits?since=${dataInicial}&until=${dataFinal}`
-    fetch(url, options).then(response => response.json()).then(commits => {
+    fetch(url).then(response => response.json()).then(commits => {
         contarCommits(commits)
+        displayCommitMessages(commits)
+    })
+
+    const repoUrl = `https://api.github.com/repos/${repositorio}`
+    fetch(repoUrl).then(response => response.json()).then(repo => {
+        displayRepoInfo(repo)
+    }).catch(error => {
+        console.log(error)
+        document.getElementById("repo-info").innerHTML = "Ocorreu um erro ao buscar as informações do repositório."
     })
 }
 
@@ -48,12 +60,30 @@ function displayCommits(commits) {
     table += `<tr><th>Data</th><th>Quantidade</th></tr>`;
     commits.forEach((commit, index) => {
         table = table + `<tr>`;
-        table = table + `<td>${commit.data}</td>`;
+        table = table + `<td>${commit.data.replace(/-/g, '/')}</td>`;
         table = table + `<td>${commit.quantidade}</td>`;
         table += `</tr>`;
     });
     table += "</table>";
     document.getElementById("commits-table").innerHTML = table;
+}
+
+function displayRepoInfo(repo) {
+    const info = `Estrelas ${repo.stargazers_count}, Forks: ${repo.forks_count}`
+    document.getElementById("repo-info").innerHTML = info;
+}
+
+function displayCommitMessages(commits) {
+    let table = '<table border="1">';
+    table += `<tr><th>Data</th><th>Mensagem</th></tr>`;
+    commits.forEach((commit, index) => {
+        table = table + `<tr>`;
+        table = table + `<td>${commit.commit.author.date.substr(0, 10).replace(/-/g, '/')}</td>`;
+        table = table + `<td>${commit.commit.message}</td>`;
+        table += `</tr>`;
+    });
+    table += "</table>";
+    document.getElementById("commits-messages").innerHTML = table;
 }
 
 

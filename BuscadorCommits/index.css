@@ -1,29 +1,51 @@
-* {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: none;
+
+.area_busca {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 40px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: rgb(233, 233, 233);
+html {
+    height: 100%;
+    overflow: auto;
 }
+
+table {
+    margin: 0 auto;
+  }
+
+.datas {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+
+
 
 label {
     color: rgb(0, 0, 0);
-    height: 5%;
-    display: table-cell;
-    vertical-align: middle;
+    display: block;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 32px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 input {
     font-size: 25px;
     border-radius: 50px;
     padding: 10px 20px;
-    
+    width: 200px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 button {
@@ -42,14 +64,60 @@ button:hover {
     background-color: #3e8e41;
 }
 
-.area_busca {
-    top: -80px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-51%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
+#commits-table commits-messages table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin-top: 20px;
+    
+  }
+  
+  #commits-table th {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+  }
+  
+  #commits-table td {
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: #f2f2f2;
+    width: 150px;
+  }
+
+  #commits-messages th {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+  }
+
+  #commits-messages th {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+  }
+
+  #commits-messages td {
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: #f2f2f2;
+    width: 150px;
+  }

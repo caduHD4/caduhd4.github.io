@@ -10,20 +10,26 @@
 <body>
     <form>
         <div class="area_busca">
-            <label>Repositorio</label>
-            <input type="text" id="repositorio" required/><br/><br/>
-            <label>Data inicial</label>
-            <input type="date" id="dataInicial" required/><br/><br/>
-            <label>Data final</label>
-            <input type="date" id="dataFinal" required/><br/><br/>
+            <label>Repositório</label>
+            <input type="text" id="repositorio" required>
+            <div class="datas">
+                <div class="data">
+                    <label>Data inicial</label>
+                    <input type="date" id="dataInicial" required>
+                </div>
+                <div class="data">
+                    <label>Data final</label>
+                    <input type="date" id="dataFinal" required>
+                </div>
+            </div>
             <button type="submit" value="Pesquisa">Pesquisar</button>
+            <div id="commits-table"></div>
+            <div id="repo-info"></div>
+            <div id="commits-messages"></div>
         </div>
         
+        
     </form>
-
-    <div id="commits-table"></div>
-
-
     <script src="index.js"></script>
 </body>
 </html>
