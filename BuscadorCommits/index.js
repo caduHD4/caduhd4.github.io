@@ -5,12 +5,13 @@ form.addEventListener('submit', function (event) {
     const dataInicial = document.querySelector("#dataInicial").value
     const dataFinal = document.querySelector("#dataFinal").value
     
- 
-    
+
     buscarCommits(repositorio, dataInicial, dataFinal)
 })
 
 function buscarCommits(repositorio, dataInicial, dataFinal) {
+    let repoAutor = '';
+    let repoNome = '';
 
     if (repositorio.startsWith("https://github.com/")) {
         repositorio = repositorio.slice(19);
@@ -18,10 +19,14 @@ function buscarCommits(repositorio, dataInicial, dataFinal) {
     const options = {
         headers: {}
     }
+
+    const token = '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';
+    options.headers['Authorization'] = `Bearer ${token}`;
+
     const url = `https://api.github.com/repos/${repositorio}/commits?since=${dataInicial}&until=${dataFinal}`
     fetch(url).then(response => response.json()).then(commits => {
         contarCommits(commits)
-        displayCommitMessages(commits)
+        displayCommitMessages(commits, repositorio )
     })
 
     const repoUrl = `https://api.github.com/repos/${repositorio}`
@@ -73,18 +78,43 @@ function displayRepoInfo(repo) {
     document.getElementById("repo-info").innerHTML = info;
 }
 
-function displayCommitMessages(commits) {
+function displayCommitMessages(commits, repositorio) {
     let table = '<table border="1">';
-    table += `<tr><th>Data</th><th>Mensagem</th></tr>`;
+    table += `<tr><th>Autor</th><th>Repositório</th><th>Data</th><th>Quantidade</th><th>Mensagem</th></tr>`;
+
+    let prevDate = null;
+    let count = 0;
+
     commits.forEach((commit, index) => {
+        const dataCommit = commit.commit.author.date.substr(0, 10).replace(/-/g, '/');
+        const repoName = repositorio.split("/").pop();
+
+        if (prevDate !== null && prevDate !== dataCommit) {
+            table = table + `<tr><td colspan="3"></td><td>${count}</td><td></td></tr>`;
+            count = 0;
+        }
+
+
         table = table + `<tr>`;
-        table = table + `<td>${commit.commit.author.date.substr(0, 10).replace(/-/g, '/')}</td>`;
+        table = table + `<td>${commit.commit.author.name}</td>`;
+        table = table + `<td>${repoName}</td>`;
+        table = table + `<td>${dataCommit}</td>`;
+        table = table + `<td></td>`;
         table = table + `<td>${commit.commit.message}</td>`;
         table += `</tr>`;
+
+        prevDate = dataCommit;
+        count++;
     });
+
+    if (prevDate !== null) {
+        table = table + `<tr><td colspan="3"></td><td>${count}</td><td></td></tr>`;
+    }
+
     table += "</table>";
     document.getElementById("commits-messages").innerHTML = table;
 }
+
 
 
 
