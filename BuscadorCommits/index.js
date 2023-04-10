@@ -83,11 +83,10 @@ function displayCommitMessages(commits, repositorio) {
     commits.forEach((commit) => {
         const date = commit.commit.author.date.substr(0, 10);
         const message = commit.commit.message;
-        const author = commit.commit.author.name;
         if (!messagesByDate[date]) {
-            messagesByDate[date] = [{ message, author }];
+            messagesByDate[date] = [message];
         } else {
-            messagesByDate[date].push({ message, author });
+            messagesByDate[date].push(message);
         }
     });
 
@@ -99,21 +98,18 @@ function displayCommitMessages(commits, repositorio) {
         const messages = messagesByDate[date];
         const quantity = messages.length;
 
-        messages.forEach((message) => {
-            table = table + `<tr>`;
-            table = table + `<td>${message.author}</td>`;
-            table = table + `<td>${repoName}</td>`;
-            table = table + `<td>${date.replace(/-/g, '/')}</td>`;
-            table = table + `<td>${quantity}</td>`;
-            table = table + `<td>${message.message}</td>`;
-            table += `</tr>`;
-        });
+        table = table + `<tr>`;
+        table = table + `<td></td>`;
+        table = table + `<td>${repoName}</td>`;
+        table = table + `<td>${date.replace(/-/g, '/')}</td>`;
+        table = table + `<td>${quantity}</td>`;
+        table = table + `<td>${messages.join("<br>")}</td>`;
+        table += `</tr>`;
     });
 
     table += "</table>";
     document.getElementById("commits-messages").innerHTML = table;
 }
-
 
 
 
