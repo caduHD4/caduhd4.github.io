@@ -79,41 +79,45 @@ function displayRepoInfo(repo) {
 }
 
 function displayCommitMessages(commits, repositorio) {
+    const messagesByDate = {};
+    commits.forEach((commit) => {
+        const date = commit.commit.author.date.substr(0, 10);
+        const message = commit.commit.message;
+        const author = commit.commit.author.name;
+        if (!messagesByDate[date]) {
+            messagesByDate[date] = [{ message, author }];
+        } else {
+            messagesByDate[date].push({ message, author });
+        }
+    });
+
     let table = '<table border="1">';
     table += `<tr><th>Autor</th><th>Repositório</th><th>Data</th><th>Quantidade</th><th>Mensagem</th></tr>`;
 
-    let prevDate = null;
-    let count = 0;
-
-    commits.forEach((commit, index) => {
-        const dataCommit = commit.commit.author.date.substr(0, 10).replace(/-/g, '/');
+    Object.keys(messagesByDate).forEach((date) => {
         const repoName = repositorio.split("/").pop();
+        const messages = messagesByDate[date];
+        const quantity = messages.length;
 
-        if (prevDate !== null && prevDate !== dataCommit) {
-            table = table + `<tr><td colspan="3"></td><td>${count}</td><td></td></tr>`;
-            count = 0;
-        }
-
-
-        table = table + `<tr>`;
-        table = table + `<td>${commit.commit.author.name}</td>`;
-        table = table + `<td>${repoName}</td>`;
-        table = table + `<td>${dataCommit}</td>`;
-        table = table + `<td></td>`;
-        table = table + `<td>${commit.commit.message}</td>`;
-        table += `</tr>`;
-
-        prevDate = dataCommit;
-        count++;
+        messages.forEach((message) => {
+            table = table + `<tr>`;
+            table = table + `<td>${message.author}</td>`;
+            table = table + `<td>${repoName}</td>`;
+            table = table + `<td>${date.replace(/-/g, '/')}</td>`;
+            table = table + `<td>${quantity}</td>`;
+            table = table + `<td>${message.message}</td>`;
+            table += `</tr>`;
+        });
     });
-
-    if (prevDate !== null) {
-        table = table + `<tr><td colspan="3"></td><td>${count}</td><td></td></tr>`;
-    }
 
     table += "</table>";
     document.getElementById("commits-messages").innerHTML = table;
 }
+
+
+
+
+
 
 
 
