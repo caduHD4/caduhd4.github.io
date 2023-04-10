@@ -106,6 +106,7 @@ function displayCommitMessages(commits, repositorio) {
         table = table + `<td>${messages.join("<br>")}</td>`;
         table += `</tr>`;
     });
+    
 
     table += "</table>";
     document.getElementById("commits-messages").innerHTML = table;
