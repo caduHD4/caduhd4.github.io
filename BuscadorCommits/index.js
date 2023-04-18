@@ -81,37 +81,38 @@ function displayRepoInfo(repo) {
 function displayCommitMessages(commits, repositorio) {
     const messagesByDate = {};
     commits.forEach((commit) => {
-        const date = commit.commit.author.date.substr(0, 10);
-        const message = commit.commit.message;
-        if (!messagesByDate[date]) {
-            messagesByDate[date] = [message];
-        } else {
-            messagesByDate[date].push(message);
-        }
+      const date = commit.commit.author.date.substr(0, 10);
+      const message = commit.commit.message;
+      const author = commit.commit.author;
+      if (!messagesByDate[date]) {
+        messagesByDate[date] = [{ message, author }];
+      } else {
+        messagesByDate[date].push({ message, author });
+      }
     });
-
+  
     let table = '<table border="1">';
     table += `<tr><th>Autor</th><th>Repositório</th><th>Data</th><th>Quantidade</th><th>Mensagem</th></tr>`;
-
+  
     Object.keys(messagesByDate).forEach((date) => {
-        const repoName = repositorio.split("/").pop();
-        const messages = messagesByDate[date];
-        const quantity = messages.length;
-
-        table = table + `<tr>`;
-        table = table + `<td></td>`;
-        table = table + `<td>${repoName}</td>`;
-        table = table + `<td>${date.replace(/-/g, '/')}</td>`;
-        table = table + `<td>${quantity}</td>`;
-        table = table + `<td>${messages.join("<br>")}</td>`;
-        table += `</tr>`;
+      const repoName = repositorio.split("/").pop();
+      const messages = messagesByDate[date].map((m) => m.message);
+      const authors = messagesByDate[date].map((m) => m.author);
+      const quantity = messages.length;
+  
+      table = table + `<tr>`;
+      table += `<td>${authors.map(author => author.name).join(", ")}</td>`;
+      table = table + `<td>${repoName}</td>`;
+      table = table + `<td>${date.replace(/-/g, "/")}</td>`;
+      table = table + `<td>${quantity}</td>`;
+      table = table + `<td>${messages.join("<br>")}</td>`;
+      table += `</tr>`;
     });
-    
-
+  
     table += "</table>";
     document.getElementById("commits-messages").innerHTML = table;
-}
-
+  }
+  
 
 
 
