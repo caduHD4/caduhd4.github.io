@@ -1,5 +1,7 @@
 const countdownLabel = document.querySelector('.countdown-label');
 const countdownItems = document.querySelectorAll('.countdown-value');
+const audio = document.getElementById("myAudio");
+const playButton = document.getElementById("playButton");
 
 // Define a data do evento (31 de maio de 2023 às 21h)
 const eventDate = new Date('2023-05-31T21:00:00');
@@ -24,8 +26,24 @@ function updateCountdown() {
   countdownLabel.textContent = 'Dias';
 }
 
-// Executa a função updateCountdown assim que a página for carregada
-document.addEventListener('DOMContentLoaded', updateCountdown);
+function toggleAudio() {
+  if (audio.paused) {
+    audio.play();
+    playButton.innerHTML = "<i class='fa fa-pause'></i>";
+  } else {
+    audio.pause();
+    playButton.innerHTML = "<i class='fa fa-music'></i>";
+  }
+}
+
+function startCountdown() {
+  audio.play(); // reproduz a música
+  updateCountdown(); // atualiza o contador
+}
+
+
+// Executa a função startCountdown assim que a página for carregada
+document.addEventListener('DOMContentLoaded', startCountdown);
 
 // Executa a função updateCountdown a cada segundo
 setInterval(updateCountdown, 1000);
