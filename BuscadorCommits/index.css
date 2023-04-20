@@ -29,7 +29,6 @@ table {
 }
 
 
-
 label {
     color: rgb(0, 0, 0);
     display: block;
@@ -43,7 +42,7 @@ input {
     font-size: 25px;
     border-radius: 50px;
     padding: 10px 20px;
-    width: 200px;
+    width: 220px;
     box-sizing: border-box;
     margin-bottom: 20px;
 }
