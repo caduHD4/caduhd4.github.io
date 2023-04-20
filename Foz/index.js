@@ -1,7 +1,5 @@
 const countdownLabel = document.querySelector('.countdown-label');
 const countdownItems = document.querySelectorAll('.countdown-value');
-const audio = document.getElementById("myAudio");
-const playButton = document.getElementById("playButton");
 
 // Define a data do evento (31 de maio de 2023 às 21h)
 const eventDate = new Date('2023-05-31T21:00:00');

@@ -69,18 +69,25 @@ h1 {
   }
 }
 
-.playButton {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #fff;
-  color: #151515;
-  font-size: 24px;
-  text-align: center;
-  line-height: 50px;
-  cursor: pointer;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+
+
+video {
+  display: block;
+  margin: 0 auto;
 }
+
+.btn-video {
+  margin-top: 50px;
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  }
+
+  .btn-video:hover {
+    background-color: #990000;
+    }

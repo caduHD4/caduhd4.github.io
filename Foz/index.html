@@ -4,12 +4,7 @@
     <meta charset="UTF-8">
     <title>Contagem Regressiva</title>
     <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-    <audio id="myAudio" src="musica.mp3"></audio>
-    <button id="playButton" onclick="toggleAudio()">
-      <i class="fa fa-play"></i>
-    </button>
   <body>
     <h1>Viagem para Foz</h1>
     <div class="countdown-container">
@@ -30,6 +25,31 @@
         <div class="countdown-label">Segundos</div>
       </div>
     </div>
+    <div>
+      <button class="btn-video" onclick="playVideo()" id="btn-video">Surpresa</button>
+      <video id="myVideo" style="display:none" controls>
+        <source src="video.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo HTML5.
+      </video>
+    </div>
+    
+    <script>
+      function playVideo() {
+        var video = document.getElementById("myVideo");
+        video.style.display = "block";
+        video.play();
+      }
+
+      function playVideo() {
+      var video = document.getElementById("myVideo");
+      var button = document.getElementById("btn-video");
+      video.style.display = "block";
+      video.play();
+      button.style.display = "none"; // adiciona esta linha para fazer o botão sumir
+}
+    </script>
+    
+    
     <script src="index.js"></script>
   </body>
 </html>
