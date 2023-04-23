@@ -36,17 +36,13 @@
     <script>
       function playVideo() {
         var video = document.getElementById("myVideo");
+        var button = document.getElementById("btn-video");
         video.style.display = "block";
+        video.volume = 0.14;
         video.play();
+        button.style.display = "none"; // adiciona esta linha para fazer o botão sumir
       }
 
-      function playVideo() {
-      var video = document.getElementById("myVideo");
-      var button = document.getElementById("btn-video");
-      video.style.display = "block";
-      video.play();
-      button.style.display = "none"; // adiciona esta linha para fazer o botão sumir
-}
     </script>
     
     
